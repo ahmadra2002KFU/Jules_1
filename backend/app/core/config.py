@@ -63,12 +63,19 @@ class Settings(BaseSettings):
             return f"postgresql+asyncpg://{values.get('POSTGRES_USER')}:{values.get('POSTGRES_PASSWORD')}@{values.get('POSTGRES_SERVER')}:{values.get('POSTGRES_PORT')}/{values.get('POSTGRES_DB')}"
         return v
 
-    # OpenAI API
+    # Google Gemini API (Primary AI Provider)
+    GEMINI_API_KEY: Optional[str] = None
+    GEMINI_MODEL: str = "gemini-pro"  # Text generation
+    GEMINI_VISION_MODEL: str = "gemini-pro-vision"  # Image/document processing
+    GEMINI_TEMPERATURE: float = 0.7
+    GEMINI_MAX_TOKENS: int = 2048
+
+    # OpenAI API (Optional Alternative)
     OPENAI_API_KEY: Optional[str] = None
     OPENAI_MODEL: str = "gpt-4-turbo-preview"
     OPENAI_TEMPERATURE: float = 0.7
 
-    # Anthropic API
+    # Anthropic API (Optional Alternative)
     ANTHROPIC_API_KEY: Optional[str] = None
     ANTHROPIC_MODEL: str = "claude-3-opus-20240229"
 
